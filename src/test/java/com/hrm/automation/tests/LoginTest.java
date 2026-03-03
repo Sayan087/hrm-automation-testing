@@ -32,4 +32,13 @@ public class LoginTest extends BaseTest {
 
 
     }
+    @Test
+    public void loginwithInvalidPassword(){
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(ConfigReader.get("Username"),"abcde");
+
+
+
+    }
 }
