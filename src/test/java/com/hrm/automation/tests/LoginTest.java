@@ -23,4 +23,13 @@ public class LoginTest extends BaseTest {
                 "Dashboard is not displayed - Login Failed"
         );
     }
+    @Test
+    public void loginwithInvalidUsername(){
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("adm",ConfigReader.get("Password"));
+
+
+
+    }
 }
