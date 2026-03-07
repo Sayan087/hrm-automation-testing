@@ -1,0 +1,13 @@
+<suite name="HRM Suite">
+
+    <listeners>
+        <listener class-name="com.hrm.automation.util.TestListener"/>
+    </listeners>
+
+    <test name="HRM Tests">
+        <packages>
+            <package name="com.hrm.automation.tests"/>
+        </packages>
+    </test>
+
+</suite>
