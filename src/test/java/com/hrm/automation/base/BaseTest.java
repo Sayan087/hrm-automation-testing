@@ -16,24 +16,25 @@ public class BaseTest {
     @BeforeMethod
     public void setup() {
 
-        // Use system-installed ChromeDriver (avoid download)
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+        // ✅ Correct path (IMPORTANT FIX)
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
-        // Configure Chrome for EC2 (headless environment)
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");              // run without GUI
-        options.addArguments("--no-sandbox");                // required for AWS
-        options.addArguments("--disable-dev-shm-usage");     // avoid memory issues
-        options.addArguments("--disable-gpu");               // stability
-        options.addArguments("--remote-allow-origins=*");    // avoid connection issues
+
+        // EC2 / Jenkins required configs
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+
+        // Optional but useful
+        options.addArguments("--window-size=1920,1080");
 
         driver = new ChromeDriver(options);
 
-        // Wait settings
         driver.manage().timeouts()
-                .implicitlyWait(Duration.ofSeconds(5));
+                .implicitlyWait(Duration.ofSeconds(10));
 
-        // Open application
         driver.get(ConfigReader.get("url"));
     }
 
