@@ -19,19 +19,21 @@ public class BaseTest {
         // Use system-installed ChromeDriver (avoid download)
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 
-        // Headless mode for EC2 (no GUI)
+        // Configure Chrome for EC2 (headless environment)
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless=new");              // run without GUI
+        options.addArguments("--no-sandbox");                // required for AWS
+        options.addArguments("--disable-dev-shm-usage");     // avoid memory issues
+        options.addArguments("--disable-gpu");               // stability
+        options.addArguments("--remote-allow-origins=*");    // avoid connection issues
 
         driver = new ChromeDriver(options);
 
+        // Wait settings
         driver.manage().timeouts()
                 .implicitlyWait(Duration.ofSeconds(5));
 
-        driver.manage().window().maximize();
-
+        // Open application
         driver.get(ConfigReader.get("url"));
     }
 
