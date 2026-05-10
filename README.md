@@ -124,5 +124,6 @@ This project demonstrates practical skills in:
 * Selenium WebDriver Implementation
 * Real-world QA Automation Practices
 * Clean Code & Maintainable Test Structure
+* Also run jenkins in AWS
 
 ---
