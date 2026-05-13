@@ -44,7 +44,7 @@ The framework is designed using:
 ✔ Modular and scalable structure
 ✔ Clean and maintainable code practices
 
----
+--
 
 ## 🔄 CI/CD Workflow
 
